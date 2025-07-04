@@ -1,5 +1,6 @@
 {
-  "users": [
-    { "username": "rexz", "password": "12345" }
+  "logins": [
+    { "username": "rexz", "password": "12345" },
+    { "username": "admin", "password": "adminpass" }
   ]
 }
