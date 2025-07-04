@@ -1,0 +1,18 @@
+body { 
+background:#0f0f0f; color:#fff; font-family:sans-serif; text-align:center; margin:0;padding:0; 
+}
+.box { 
+padding:40px 20px; 
+}
+input { 
+padding:10px; margin:5px; width:80%;max-width:200px;border:none;border-radius:5px;background:#222;color:#fff; 
+}
+button { 
+padding:10px 20px; margin:5px; border:none;border-radius:5px;color:#000;background:#0ff;cursor:pointer; 
+}
+.logout { 
+position:absolute; top:10px; right:10px; background:#f44;color:#fff; 
+}
+#e { 
+color:#f44; 
+}
