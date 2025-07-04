@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Panel</title>
+  <style>
+    body { background:#0f0f0f; color:white; font-family:sans-serif; text-align:center; padding-top:100px }
+    input, button { padding:10px; margin:10px; border:none; border-radius:5px }
+    input { background:#222; color:white }
+    button { background:#00c8ff; color:white; cursor:pointer }
+    .card { background:#1a1a1a; padding:30px; max-width:300px; margin:20px auto; border-radius:12px }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Login Panel Bug</h2>
+    <input id="username" placeholder="Username"><br>
+    <input id="password" type="password" placeholder="Password"><br>
+    <button onclick="login()">Login</button>
+    <p id="err" style="color:red"></p>
+  </div>
+
+  <script>
+    async function login() {
+      const u = document.getElementById("username").value.trim();
+      const p = document.getElementById("password").value.trim();
+      const err = document.getElementById("err");
+
+      try {
+        const res = await fetch("https://raw.githubusercontent.com/rexz26hff/Website-protofilio-kelas-/main/logindata.json");
+        const json = await res.json();
+        const user = json.users.find(x => x.username === u && x.password === p);
+        if (user) {
+          localStorage.setItem("logged", "yes");
+          location.href = "dashboard.html";
+        } else {
+          err.textContent = "Username atau password salah!";
+        }
+      } catch {
+        err.textContent = "Gagal ambil data login!";
+      }
+    }
+  </script>
+</body>
+</html>
