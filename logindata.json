@@ -1,6 +1,12 @@
 {
-  "logins": [
-    { "username": "rexz", "password": "12345" },
-    { "username": "admin", "password": "adminpass" }
+  "admins": [
+    {
+      "username": "admin1",
+      "password": "12345"
+    },
+    {
+      "username": "rexz",
+      "password": "123"
+    }
   ]
 }
